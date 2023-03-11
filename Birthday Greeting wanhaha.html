@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+	<head>
+	    <title>Birthday Greeting wanhaha</title>
+	    <!--引入外部样式表-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+	    <!-- 用容器包裹页面主要内容和创建按钮 -->
+	    <div class="container1">
+	        <!-- 页面主要内容 -->
+	        <div class="text-container">
+	            <h1>Happy Birthday!</h1>
+	            <h2>万哈哈</h2>
+	            <p>Best wishes to you on your special day.</p>
+	        </div>
+	        <!-- 创建按钮并跳转到目标页面 -->
+	        <div>
+	            <a class="btn btn-primary" href="第二页.html"><button>我不会告诉你这有按钮的</button></a>
+	        </div>
+	    </div>
+	</body>
+	<!--主体标记开始-->
+	<body>
+	<!--定义一个名为container的div容器-->
+	<div class="container">
+		<!--定义一个名为blackpink-portrait1的div，显示第一位成员的头像-->
+  		<div class="blackpink-portrait1">
+  			<!--定义一个叠加层-->
+    		<div class="overlay"></div>
+ 	 	</div>
+  		<div class="blackpink-portrait2">
+    		<div class="overlay"></div>
+  		</div>
+  		<div class="blackpink-portrait3">
+    		<div class="overlay"></div>
+  		</div>
+  		<div class="blackpink-portrait4">
+    		<div class="overlay"></div>
+  		</div>
+	</div>
+	</body>
+</html>
+
+	
+
+	<!--css代码-->
+	<style type="text/css">
+	    /* 设置背景颜色和字体样式 */
+	    body {
+	            background-color: pink;
+	            color: white;
+	            font-family: 'Arial', sans-serif;
+	            font-size: 24px;
+	            text-align: center;
+        }
+        /* 设置点点动态背景画布宽高 */
+        canvas {
+            width: 100%;
+            height: 100%;
+            position: fixed;	/*将元素固定在浏览器窗口的特定位置*/
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* 按钮样式 */
+        button {							/*button是HTML中的一个元素，用于创建可点击的按钮。可以在<button>和</button>标签之间添加文本或其他HTML元素来设置按钮的标签。常用的属性包括type（按钮的类型，如submit、reset或button等），disabled（禁用按钮），name（按钮的名称，通常用于表单提交）等。可以使用CSS样式来自定义按钮的外观和行为*/
+            background-color: transparent;	/*设置按钮的背景颜色为透明*/
+            color: white;					/*设置按钮的背景颜色为透明*/
+            border: none;					/*设置按钮的边框为无边框*/
+            padding: 10px 20px;				/*设置按钮的内边距顶部和底部为10像素，左侧和右侧20像素*/
+            text-align: center;				/*设置按钮的文字居中对齐*/
+            font-size: 24px;				/*设置按钮文字的字体大小为24像素*/
+            margin-top: 20px;				/*设置按钮与上方元素的距离为20像素*/
+            cursor: pointer;				/*当鼠标悬停在按钮上时，光标将变为指针形状*/
+        }
+        /* 按钮样式 */
+        .btn {
+		  position: relative;				/*定义相对定位，用于子元素定位*/
+		  display: inline-flex;				/*定义元素为内联弹性盒子*/
+		  align-items: center;				/*定义元素在交叉轴上居中对齐*/
+		  justify-content: center;			/*定义元素在主轴上居中对齐*/
+		  font-size: 1.5rem;				/*定义字体大小为1.5倍的根元素字体大小*/
+		  padding: 0.1rem 0.1rem;			/*定义内边距为0.1倍的根元素字体大小*/
+		  border: none;						/*定义无边框*/
+		  border-radius: 10rem;				/*定义圆角半径为10倍的根元素字体大小*/
+		  color: #fff;						/*定义字体颜色为白色*/
+		  cursor: pointer;					/*定义光标为手型*/
+		  overflow: hidden;					/*定义溢出内容隐藏*/
+		  z-index: 1;						/*定义堆叠顺序为1*/
+		  transition: all 0.3s ease;		/*定义过渡效果，所有属性变化耗时0.3秒，动画效果为平滑过渡*/
+		}
+
+		.btn:hover {						/*:hover 是一个CSS伪类，用于在鼠标悬停在元素上时应用样式。它允许开发人员在元素被悬停时应用一些样式，以改变元素的外观或行为，例如改变文本颜色、改变背景颜色、添加动画效果等等。*/
+		  transform: translateY(-5px);					/*向上移动5像素*/
+		  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);	/*投影效果，使按钮看起来更加突出*/
+		}
+
+		.btn:active {						/*:active是CSS伪类选择器，点击元素并保持点击状态时应用样式，用于在用户点击并保持按钮按下状态时取消按钮的阴影和向上移动的效果，以便与按钮实际按下的行为保持一致*/
+		  transform: translateY(0);
+		  box-shadow: none;
+		}
+
+		.btn span {
+		  position: relative;				/*元素相对于其正常位置进行定位，其余元素的布局不会受到影响*/
+		  z-index: 2;						/*元素的层级，数字越大则越在上层显示*/
+		}
+
+		.btn svg {							/*对 .btn 类下的 SVG 图像进行样式设置，让它覆盖整个按钮并且居中*/
+		  position: absolute;				/*SVG 相对于父元素 .btn 定位*/
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  width: 100%;
+		  height: 100%;
+		  margin: auto;						/*居中对齐 SVG*/
+		  z-index: -1;
+		  transition: all 0.3s ease;		/*实现所有属性 0.3 秒的过渡效果，以平滑地在按钮状态变化时更新 SVG 的样式*/
+		}
+
+		.btn-primary svg rect {
+		  stroke-dashoffset: 0;
+		}
+
+		.btn-primary:hover svg rect {
+		  stroke-dashoffset: -132;
+		}
+
+		.btn-primary:active svg rect {
+		  stroke-dashoffset: 0;
+		}
+
+		.btn-primary:hover svg path {
+		  stroke-dashoffset: 0;
+		}
+
+		.btn-primary:active svg path {
+		  stroke-dashoffset: 22;
+		}
+
+		.btn-primary svg path {
+		  stroke-dasharray: 22 22;
+		  stroke-dashoffset: 22;
+		  transition: all 0.3s ease;
+		}
+
+        /* 容器样式 */
+        .container1 {
+          display: flex;					/*使用 Flexbox 布局*/
+          flex-direction: column;			/*主轴方向为垂直方向（从上到下排列）*/
+          justify-content: center;			/*主轴对齐方式为居中对齐*/
+          align-items: center;				/*交叉轴对齐方式为居中对齐*/
+          height: 100%;						/*容器的高度占据父元素的 100%*/
+        }
+        /* 文本容器样式 */
+        .text-container {
+          display: flex;					/*Flexbox 布局方式*/
+          flex-direction: column;			/*主轴方向为垂直方向，即排列方式为从上到下*/
+          justify-content: center;			/*主轴方向上居中对齐，即上下居中*/
+          align-items: center;				侧轴方向上居中对齐，即左右居中
+          height: 100%;						/*容器高度为其父元素高度的 50%*/
+        }
+    </style>
+
+    <!--js代码-->
+    <script type="text/javascript">
+        /* 创建画布 */
+        var canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+        var ctx = canvas.getContext("2d");
+
+        /* 设置画布大小 */
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        /* 定义流星雨的属性 */
+        var meteor = {
+            x: null,
+            y: null,
+            len: null,
+            speed: null,
+            radius: null,
+            nextX: null,
+            nextY: null,
+            isFall: false
+        }
+
+        var meteors = [];
+
+        /* 随机生成流星雨 */
+        for (var i = 0; i < 200; i++) {
+            meteors.push(createMeteor());
+        }
+
+        /* 创建流星雨 */
+        function createMeteor() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height / 2 - 100,
+                len: Math.random() * 80 + 10,
+                speed: Math.random() * 4 + 4,
+                radius: Math.random() * 2 + 1,
+                nextX: Math.random() * 0.06 - 0.03,
+                nextY: Math.random() * 0.06 - 0.03,
+                isFall: false
+            }
+        }
+
+        /* 绘制流星雨 */
+	        function drawMeteor() {
+	            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	            for (var i = 0; i < meteors.length; i++) {
+	                var meteor = meteors[i];
+
+	                /* 绘制流星 */
+	                ctx.beginPath();
+	                ctx.arc(meteor.x, meteor.y, meteor.radius, 0, Math.PI * 2);
+	                ctx.fillStyle = "white";
+	                ctx.fill();
+
+	                /* 计算流星位置 */
+	                meteor.x += meteor.nextX * meteor.speed;
+	                meteor.y += meteor.nextY * meteor.speed;
+	            }
+	        }
+	        /* 开始绘制流星雨动画 */
+	        function startAnimation() {
+	            requestAnimationFrame(startAnimation);
+	            drawMeteor();
+	        }
+
+	        /* 触发流星雨动画 */
+	        /*var btn = document.querySelector("button");
+	        btn.addEventListener("click", function() {
+	            /* 创建跳转前的全屏黑色遮罩 */
+	            var mask = document.createElement("div");
+	            mask.style.position = "fixed";
+	            mask.style.top = 0;
+	            mask.style.left = 0;
+	            mask.style.width = "100%";
+	            mask.style.height = "100%";
+	            mask.style.backgroundColor = "black";
+	            mask.style.opacity = 1;
+	            mask.style.zIndex = 999;
+	            document.body.appendChild(mask);
+
+	            /* 设置遮罩透明度渐变 */
+	            var opacity = 1;
+	            var interval = setInterval(function() {
+	                if (opacity > 0) {
+	                    opacity -= 0.02;
+	                    mask.style.opacity = opacity;
+	                } else {
+	                    clearInterval(interval);
+	                    document.body.removeChild(mask);
+	                }
+	            }, 30);
+
+	            /* 启动流星雨动画 */
+	            startAnimation();
+	    </script>
+
+	<!--CSS样式标记开始-->
+	<style type="text/css">
+		/* 容器的样式 */
+		.container {							/*选择器指定样式应用于名为container的div*/
+		  display: flex;						/*flex布局*/
+		  justify-content: space-between;		/*子元素均匀分布在容器中*/
+		  align-items: flex-end;				/*子元素底部对齐*/
+		  width: 80%;							/*设置容器宽度为80%*/
+		  height: 350px;						/*设置容器高度为800px*/
+		  margin: 0 auto; 						/*左右居中*/
+		  position: relative;					/*相对定位*/
+		}
+
+		/* 黑粉团员肖像的样式 */
+		.blackpink-portrait1 {					/*选择器指定样式应用于名为blackpink-portrait1的div*/
+		  width: 200px;							/*设置div宽度为200px*/
+		  height: 200px;						/*设置div高度为200px*/
+		  position: relative;					/*相对定位*/
+		  background-image: url("https://images.squarespace-cdn.com/content/v1/5e033a39bada7c55a6d38c81/1588744927538-UOT3HICX9DVJEECSVMCQ/Lisa.gif?format=300w");
+		  background-size: cover;				/*设置元素的背景图片自适应元素大小，保持图片不变形并覆盖整个元素*/
+		  background-position: center;			/*设置元素的背景图片居中对齐*/
+		  border-radius: 50%;					/*将元素的四个角变成圆角，使元素呈现圆形*/
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);		/*为元素添加一个阴影效果，使其看起来有立体感*/
+		  animation: pulse 2s ease-in-out infinite;		/*为元素添加一个动画效果，即不断脉动的效果，持续时间为2秒，动画缓动函数为ease-in-out，无限循环*/
+		}
+
+		.blackpink-portrait2 {
+		  width: 200px;
+		  height: 200px;
+		  position: relative;
+		  background-image: url("https://images.squarespace-cdn.com/content/v1/5e033a39bada7c55a6d38c81/1588745004085-T12RW5193U0L4AIKQG96/Jennie.gif?format=300w");
+		  background-size: cover;
+		  background-position: center;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		  animation: pulse 2s ease-in-out infinite;
+		}
+
+		.blackpink-portrait3 {
+		  width: 200px;
+		  height: 200px;
+		  position: relative;
+		  background-image: url("https://images.squarespace-cdn.com/content/v1/5e033a39bada7c55a6d38c81/1588745110853-ZD160DER0C5Y9XHLIJDN/Ji+Soo.gif?format=300w");
+		  background-size: cover;
+		  background-position: center;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		  animation: pulse 2s ease-in-out infinite;
+		}
+
+		.blackpink-portrait4 {
+		  width: 200px;
+		  height: 200px;
+		  position: relative;
+		  background-image: url("https://images.squarespace-cdn.com/content/v1/5e033a39bada7c55a6d38c81/1588745213425-BXR7EN90ZCIWKQR9YXVP/Rose%CC%81.gif?format=300w");
+		  background-size: cover;
+		  background-position: center;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		  animation: pulse 2s ease-in-out infinite;
+		}
+
+		/* 后面白色呼吸灯效果层 */
+		.blackpink-portrait1:before {				/*定义一个伪元素 .blackpink-portrait1*/
+		  content: "";								/*设置该伪元素的内容为空字符串*/
+		  background-size: cover;					/*将背景图片调整到最适合容器大小，并填满整个容器*/
+		  background-position: center;				/*将背景图片的位置设置为容器的中心*/
+		  width: 100%;								/*设置该伪元素的宽度都为100%*/
+		  height: 100%;								/*设置该伪元素的高度都为100%*/
+		  position: absolute;						/*将该伪元素的定位方式设置为绝对定位，相对于最近的非 static（默认）定位的祖先元素进行定位*/
+		  top: 0;									/*将该伪元素的位置设置为相对于祖先元素的左上角，即相对于整个容器的左上角*/
+		  left: 0;
+		  border-radius: 50%;						/*--将该伪元素的边框设置为圆形，圆的半径为元素宽度的一半*/
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);	/*--添加一个黑色的阴影效果，阴影的大小为20像素，不透明度为0.5*/
+		}
+
+		.blackpink-portrait2:before {
+		  content: "";
+		  background-size: cover;
+		  background-position: center;
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.blackpink-portrait3:before {
+		  content: "";
+		  background-size: cover;
+		  background-position: center;
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.blackpink-portrait4:before {
+		  content: "";
+		  background-size: cover;
+		  background-position: center;
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  border-radius: 50%;
+		  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+
+		/*鼠标悬停时效果层*/
+		.overlay {									/*定义一个名为".overlay"的CSS类*/
+		  width: 100%;								/*设置元素宽度为100%*/
+		  height: 100%;								/*设置元素高度为100%*/
+		  position: absolute;						/*设置元素的定位方式为绝对定位*/
+		  top: 0;									/*设置元素与父元素顶部对齐*/
+		  left: 0;									/*设置元素与父元素左侧对齐*/
+		  background-color: black;					/*设置背景颜色为黑色*/
+		  opacity: 0.45;								/*设置不透明度为0.45，即半透明效果*/
+		  border-radius: 50%;						/*设置边框圆角为50%，使该元素呈现圆形*/
+		  transition: opacity 0.5s ease-in-out;		/*定义透明度的变化效果，在0.5秒内以ease-in-out的速度过渡。这样设置可以使覆盖层呈现出淡入淡出的效果*/
+		}
+
+		/* 当鼠标悬停在类.blackpink-portrait上时，将层的不透明度从0.5变为0.1，实现一种逐渐淡出的效果*/
+		.blackpink-portrait1:hover .overlay {
+		  opacity: 0.1;
+		}
+		
+		.blackpink-portrait2:hover .overlay {
+		  opacity: 0.1;
+		}
+
+		.blackpink-portrait3:hover .overlay {
+		  opacity: 0.1;
+		}
+
+		.blackpink-portrait4:hover .overlay {
+		  opacity: 0.1;
+		}
+
+		/* 脉动动画 */
+		@keyframes pulse {			/* 定义名为 pulse 的关键帧动画 */
+		  0% {						/* 在动画开始时元素的初始状态 */
+		    transform: scale(1);	
+		  }
+		  50% {						/* 动画到 50% 时元素的状态 */
+		    transform: scale(1.1);
+		  }							/* 在动画结束时元素的状态 */
+		  100% {
+		    transform: scale(1);
+		  }
+		}
+
+		/* 给带有 class 为 blackpink-portrait 的元素添加 pulse 动画 */
+		.blackpink-portrait1:before {
+		  animation: pulse 2s ease-in-out infinite;		/*使用CSS动画pulse，并将其应用到.blackpink-portrait1的伪元素:before上，使其无限循环。具体的动画效果可以在CSS中定义@keyframes*/
+		}
+
+		.blackpink-portrait2:before {
+		  animation: pulse 2s ease-in-out infinite;
+		}
+
+		.blackpink-portrait3:before {
+		  animation: pulse 2s ease-in-out infinite;
+		}
+
+		.blackpink-portrait4:before {
+		  animation: pulse 2s ease-in-out infinite;
+		}
+	</style>
