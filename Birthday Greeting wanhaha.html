@@ -9,8 +9,7 @@
 	<body>
 	    <!-- 用容器包裹页面主要内容和创建按钮 -->
 	    <div class="container1">
-		<!-- 页眉和空格 -->
-		<div class="element">
+	    	<div class="element">
 		    	<div class="header">
 				    <h5>Gift to the one and only unique you in this world</h5>
 				</div>
@@ -55,32 +54,33 @@
 	
 
 	<!--css代码-->
-	/* 定义黑色页眉样式 */
-	.header {
-	    background-color: #333;
-	    color: white;
-	    padding: 30px;
-	    text-align: center;
-    	}
-	/* 空格 */
-	.tm {
-	    opacity: 0;
-	    color: white;
-	    padding: 100px;
-	    text-align: center;
-	}
-	/* 宽度为视口宽度的100% */
-	.element {
-	    width: 100vw;
-    	}
-	/*重置所有元素默认样式*/
-	* {
-	    margin: 0;
-	    padding: 0;
-	    box-sizing: border-box;
-	}
-
 	<style type="text/css">
+
+	    /* 定义黑色页眉样式 */
+	    .header {
+	        background-color: #333;
+	        color: white;
+	        padding: 30px;
+	        text-align: center;
+	    }
+
+	    .tm {
+	        opacity: 0;
+	        color: white;
+	        padding: 100px;
+	        text-align: center;
+	    }
+
+		.element {
+	        width: 100vw;
+	    }
+
+	    * {
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		}
+
 	    /* 设置背景颜色和字体样式 */
 	    body {
 	            background-color: pink;
@@ -194,7 +194,7 @@
           display: flex;					/*Flexbox 布局方式*/
           flex-direction: column;			/*主轴方向为垂直方向，即排列方式为从上到下*/
           justify-content: center;			/*主轴方向上居中对齐，即上下居中*/
-          align-items: center;				侧轴方向上居中对齐，即左右居中
+          align-items: center;				/*侧轴方向上居中对齐，即左右居中*/
           height: 100%;						/*容器高度为其父元素高度的 50%*/
         }
     </style>
@@ -298,7 +298,7 @@
 	            startAnimation();
 	    </script>
 
-	<!--CSS样式标记开始-->
+	<!--blackpink部分-->
 	<style type="text/css">
 		/* 容器的样式 */
 		.container {							/*选择器指定样式应用于名为container的div*/
